@@ -1,0 +1,52 @@
+server:
+  port: 7777
+info:
+  app:
+    name: Zull Server
+    description: API Gateway
+    version: 1.0.0
+zuul:
+  routes:
+    rest-service:
+      path: /rest-service/**
+      service-id: rest-server
+      strip-prefix: true
+      sensitiveHeaders: null
+    car-make-server:
+      path: /car-make/**
+      service-id: car-make-server
+      strip-prefix: true
+      sensitiveHeaders: null
+    car-model-server:
+      path: /car-model/**
+      service-id: car-model-server
+      strip-prefix: true
+      sensitiveHeaders: null
+    car-supply-server:
+      path: /car/**
+      service-id: car-supply-server
+      strip-prefix: true
+      sensitiveHeaders: null
+    oauth-server:
+      path: /oauth-service/**
+      service-id: oauth-server
+      strip-prefix: true
+      sensitiveHeaders: null
+  ignored-services: '*'
+  host:
+    connect-timeout-millis: 30000
+    socket-timeout-millis: 30000
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 20000
+ribbon:
+  ReadTimeout: 990000
+  ConnectTimeout: 40000
+  maxAutoRetries: 2
+  MaxAutoRetriesNextServer: 2
+  eureka:
+    enabled: true

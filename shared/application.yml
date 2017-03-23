@@ -1,0 +1,45 @@
+eureka:
+  client:
+    fetch-registry: true
+    initialInstanceInfoReplicationIntervalSeconds: 10
+    instance-info-replication-interval-seconds: 30
+    registry-fetch-interval-seconds: 30
+    serviceUrl:
+      defaultZone: http://user:password@localhost:9999/eureka/
+#      defaultZone: http://localhost:9999/eureka/
+  instance:
+    leaseRenewalIntervalInSeconds: 10
+    leaseExpirationDurationInSeconds: 30
+    prefer-ip-address: true
+server:
+  error:
+    whitelabel:
+      enabled: false
+  tomcat:
+    max-threads: 3
+logging:
+  level:
+    com.spring.boot: info
+security:
+  oauth2:
+    resource:
+      token-info-uri: http://localhost:7777/oauth-service/oauth/check_token
+ribbon:
+  ServerListRefreshInterval: 1000
+  
+oauth:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/testdb
+    username: root
+    password: root
+    driver-class-name: org.postgresql.Driver
+spring:    
+  jpa:
+    show-sql: false
+    hibernate:
+      ddl-auto: create-drop
+      naming:
+        strategy: org.hibernate.cfg.ImprovedNamingStrategy
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect  
