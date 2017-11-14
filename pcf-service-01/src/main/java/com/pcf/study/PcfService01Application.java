@@ -4,9 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class PcfService02Application {
+//@EnableEurekaClient
+public class PcfService01Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(PcfService02Application.class, args);
+		SpringApplication.run(PcfService01Application.class, args);
 	}
 }
