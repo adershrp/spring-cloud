@@ -10,7 +10,6 @@ import java.util.concurrent.Executor;
 
 /**
  * 
- *  
  * @author Adersh.P
  *
  */
@@ -18,21 +17,20 @@ import java.util.concurrent.Executor;
 @EnableAsync
 public class Application {
 
-    public static void main(String[] args) {
-        // close the application context to shut down the custom ExecutorService
-        SpringApplication.run(Application.class, args).close();
-    }
+	public static void main(String[] args) {
+		// close the application context to shut down the custom ExecutorService
+		SpringApplication.run(Application.class, args).close();
+	}
 
-    @Bean
-    public Executor asyncExecutor() {
-        ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
-        executor.setCorePoolSize(3);
-        executor.setMaxPoolSize(3);
-        executor.setQueueCapacity(500);
-        executor.setThreadNamePrefix("GithubLookup-");
-        executor.initialize();
-        return executor;
-    }
-
+	@Bean
+	public Executor asyncExecutor() {
+		ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
+		executor.setCorePoolSize(3);
+		executor.setMaxPoolSize(3);
+		executor.setQueueCapacity(500);
+		executor.setThreadNamePrefix("GithubLookup-");
+		executor.initialize();
+		return executor;
+	}
 
 }
